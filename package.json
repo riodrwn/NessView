@@ -6,11 +6,12 @@
   "type": "module",
 "scripts": {
   "dev": "vite",
-  "build": "npx vite build",
-  "preview": "npx vite preview",
+  "build": "node node_modules/vite/bin/vite.js build",
+  "preview": "node node_modules/vite/bin/vite.js preview",
   "predeploy": "npm run build",
   "deploy": "gh-pages -d dist"
-},
+}
+,
   "dependencies": {
     "fast-xml-parser": "^4.3.6",
     "react": "^18.2.0",
