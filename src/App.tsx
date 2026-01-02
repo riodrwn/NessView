@@ -538,7 +538,7 @@ function App() {
         <div className="upload-panel">
           <div className="notice">
             <strong>Client-Side Processing</strong>
-            <span>Browser-only analysis of Nessus reports. No uploads required.</span>
+            <span>100% client-side. Nothing is uploaded to our servers.</span>
           </div>
           <input
             ref={fileInputRef}
