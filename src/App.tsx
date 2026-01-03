@@ -473,7 +473,7 @@ function App() {
     <div className="app-shell">
       <header className="app-header">
         <div className="brand">
-          <h1>NessView – A clean Nessus report viewer</h1>
+          <h1>NessView – Nessus parsing and visualization scan results</h1>
           <p className="muted">
             Load a .nessus, .xml, or exported .json report to explore hosts, vulnerabilities, and severity distribution
             with exportable reports.
