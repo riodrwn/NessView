@@ -59,4 +59,4 @@ Then open http://localhost:4173/. Stop with `docker compose down`.
 Issues and PRs are welcome. If you spot bugs, UX rough edges, or have ideas for new exports/visualizations, open an issue or submit a PR.
 
 ## License
-MIT (see LICENSE if present).
+NessView is released with ♡ by riodrwn under the [Apache 2.0 license](https://github.com/riodrwn/NessView/blob/main/LICENSE).
