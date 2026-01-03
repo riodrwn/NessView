@@ -3,7 +3,6 @@
 NessView is a client-side Nessus/Tenable report viewert. Drop in .nessus, .xml, or exported .json files to explore hosts, vulnerabilities, services, and severity distribution with exportable reports. No data leaves your browser.
 
 ![NessView UI](public/screenshot.png)
-![NessView UI](public/screenshot1.png)
 
 ---
 
