@@ -1,45 +1,63 @@
 # NessView
 
-Client-side Nessus/Tenable report viewer. Parse .nessus/.xml/.json exports locally, explore hosts and findings, and export CSV/XLSX/HTML — nothing leaves the browser.
+NessView is a client-side Nessus/Tenable report viewert. Drop in .nessus, .xml, or exported .json files to explore hosts, vulnerabilities, services, and severity distribution with exportable reports. No data leaves your browser.
 
 ![NessView UI](public/screenshot.png)
+![NessView UI](public/screenshot1.png)
+
+---
 
 ## Highlights
-- 100% client-side: drag-and-drop or file picker for .nessus/.xml/.json (includes a built-in sample).
-- Dashboards: severity distribution, risk score, totals, and quick KPIs.
-- Views: Summary, Vulnerabilities, Hosts, Services with filters, accordions, and copy helpers.
-- Exports: CSV (occurrences/findings), XLSX workbook (hosts, findings, scan info, severity tabs, vuln?IP summary), printable HTML summary.
-- Privacy: no network calls; files stay in-memory in the tab.
+- 100% client-side parsing and visualization. Nothing is uploaded to servers.
+- Drag and drop or file picker for .nessus, .xml, and Tenable JSON exports (sample file included).
+- Dashboards for severity distribution, overall risk score, and KPIs.
+- Dedicated views: Summary, Vulnerabilities, Hosts, Services with filters and accordions.
+- Exports: CSV (occurrences and findings), XLSX workbook (hosts, findings, scan info, severity tabs, vuln-to-IP summary), printable HTML summary.
+- SPA-friendly: works entirely in the browser; files stay in memory until you close the tab.
 
-## Getting started
+## Quick start (local)
 ```bash
 npm ci
 npm run dev
 ```
-Open the Vite URL and drop in a Nessus/Tenable export.
+Open the Vite URL shown in the terminal, then drag and drop a Nessus/Tenable export or click to browse. Use **Load sample** to demo the UI; **Clear** resets state.
 
-## Usage tips
-- Tabs: Summary (charts, cards, exports), Vulnerabilities (plugin list with copy), Hosts (accordion per host), Services (ports/protocols with hosts).
-- Use **Load sample** to demo; **Clear** resets the state.
-- Toast appears when copying from Vulnerabilities view.
+## Run with Docker Compose
+```bash
+docker compose build
+docker compose up -d
+```
+Then open http://localhost:4173/. Stop with `docker compose down`.
+
+## Usage
+- Tabs: Summary (charts, cards, exports), Vulnerabilities (plugin list with copy helper), Hosts (accordion per host with findings), Services (ports/protocols with host list).
+- Filters: click severity in charts to focus on that bucket; click again to reset.
+- Exports: use the export bar on Summary to download CSV, XLSX, or HTML.
+- Copy: in Vulnerabilities, copy plugin details to the clipboard; a toast confirms.
 
 ## Export details
 - `nessus-occurrences.csv`: every finding instance by host.
 - `nessus-findings.csv`: unique findings with counts and affected host counts.
-- XLSX: `Hosts`, `ScanInfo`, `Findings`, `Vuln_to_IP_Summary`, plus severity-specific sheets with colored tabs.
-- HTML: top findings/hosts summary for quick sharing.
+- XLSX workbook: `Hosts`, `ScanInfo`, `Findings`, `Vuln_to_IP_Summary`, plus severity-specific sheets with colored tabs.
+- HTML: top findings and top hosts summary for quick sharing.
 
-## Data handling
-- Runs entirely in-browser; no uploads or external requests.
+## Privacy and data handling
+- Runs entirely in-browser; no network calls.
 - Files remain in memory; close the tab to clear them.
 
-## Scripts
-- `npm run dev` — start dev server
-- `npm run build` — type-check + production build
-- `npm run preview` — preview the built app
-- `npm run lint` — type-check only
+## Tech stack
+- Vite + React + TypeScript
+- fast-xml-parser for Nessus XML
+- xlsx for spreadsheet exports
 
-## Deploy to GitHub Pages
-- In `vite.config.ts`, set `base: '/<repo-name>/'` (currently `/NessView/`).
-- Use the provided workflow `.github/workflows/deploy.yml` (build on `main`, upload `dist`, deploy with `actions/deploy-pages`).
-- Push to `main`; Pages will publish to `https://riodrwn.github.io/<repo-name>/`.
+## Development scripts
+- `npm run dev` - start dev server
+- `npm run build` - type-check and production build
+- `npm run preview` - preview the built app
+- `npm run lint` - type-check only
+
+## Contributing
+Issues and PRs are welcome. If you spot bugs, UX rough edges, or have ideas for new exports/visualizations, open an issue or submit a PR.
+
+## License
+MIT (see LICENSE if present).
